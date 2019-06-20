@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", function() {
     })
     .then((response) => {
       const catList = response.data.cats;
-      console.log(catList)
       
       catList.forEach((cat, index) => {
         let dataImg = document.createElement('img');
@@ -15,11 +14,17 @@ document.addEventListener("DOMContentLoaded", function() {
         dataImg.alt = `Photo of: ${cat.name}`;
         const catBoxes = document.querySelectorAll('.cat-box');
         catBoxes[index].append(dataImg);
-      })
+        
+        let bookEntry = document.createElement('li');
+        // bookEntry.innerText = cat.name;
+        bookEntry.innerText = cat.name
+        const catBook = document.querySelector('#cat-book');
+
+        catBook.append(bookEntry);
+      });
     })
       .catch((error) => {
         console.log(error);
     })
-    // console.log('hi')
   });
 });
